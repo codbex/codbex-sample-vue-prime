@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 Form with PrimeVue (ES6)</title>
+
+    <!-- Import Vue 3 -->
+    <script src="//unpkg.com/vue@3"></script>
+
+    <script src="https://unpkg.com/primevue/umd/primevue.min.js"></script>
+    <script src="https://unpkg.com/@primevue/themes/umd/aura.min.js"></script>
+
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>Enhanced Form</h1>
+
+      <p-form label-width="auto" style="max-width: 600px" @submit.prevent="submitForm">
+        <!-- Text Input -->
+        <div class="flex flex-col gap-2">
+          <label for="username">Name</label>
+          <p-input-text v-model="formData.name"></p-input-text>
+        </div>
+
+        <!-- Date Picker -->
+        <div class="flex flex-col gap-2">
+          <label for="username">Select Date</label>
+          <p-date-picker width="400" v-model="formData.date"></p-date-picker>
+        </div>
+
+        <!-- Radio Buttons -->
+        <div class="flex flex-col gap-2">
+          <p-radio-group name="ingredient" v-model="formData.gender" class="flex flex-wrap gap-4">
+            <div class="flex items-center gap-2">
+              <p-radio inputId="Male" value="Male"></p-radio>
+              <label for="Male">Male</label>
+            </div>
+            <div class="flex items-center gap-2">
+              <p-radio inputId="Female" value="Female"></p-radio>
+              <label for="Female">Female</label>
+            </div>
+          </p-radio-group>
+        </div>
+
+        <!-- Slider -->
+        <div class="flex flex-col gap-2">
+          <p-slider v-model="formData.age"></p-slider>
+          <div>Age: {{ formData.age }}</div>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="flex items-center gap-2">
+          <p-checkbox inputId="agree" name="pizza" v-model="formData.agree" value="true"></p-checkbox>
+          <label for="agree">Agree to terms</label>
+        </div>
+
+        <!-- Dropdown -->
+        <div class="flex flex-col gap-2">
+          <label for="username">Select an option</label>
+          <p-select v-model="formData.option" placeholder="please select your option" :options="items" fluid>
+          </p-select>
+        </div>
+
+        <!-- Language Switcher -->
+        <select v-model="locale" @change="changeLocale">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+        </select>
+
+        <h2>{{ $t('welcome') }}</h2>
+
+        <!-- Submit Button -->
+        <p-button type="primary">
+          {{ $t('submit') }}
+        </p-button>
+      </p-form>
+
+      <!-- Output the Form Data -->
+      <div>
+        <pre>{{ formData }}</pre>
+      </div>
+
+      <!-- Table for Remote Data -->
+      <div>
+        <h2>Remote Data</h2>
+        <p-data-table :value="users" tableStyle="min-width: 50rem">
+          <p-column field="id" header="ID" sortable></p-column>
+          <p-column field="name" header="Name" sortable></p-column>
+          <p-column field="email" header="Email"></p-column>
+        </p-data-table>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- Import Vue I18n -->
+    <script src="https://unpkg.com/vue-i18n@9"></script>
+    <!-- Import JavaScript file as ES6 module -->
+    <script type="module" src="app.js"></script>
+  </body>
+
+</html>
