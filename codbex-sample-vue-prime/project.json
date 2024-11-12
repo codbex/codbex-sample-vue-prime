@@ -1,5 +1,5 @@
 {
-    "guid": "codbex-sample-vue-prime",
+    "guid": "prime-vue",
     "dependencies": [],
     "actions": [
         {
@@ -7,11 +7,11 @@
             "commands": [
                 {
                     "os": "unix",
-                    "command": "tsc"
+                    "command": "npm run build"
                 },
                 {
                     "os": "windows",
-                    "command": "cmd /c tsc"
+                    "command": "cmd /c npm run build"
                 }
             ],
             "registry": "true"
